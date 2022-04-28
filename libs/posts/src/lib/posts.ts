@@ -2,12 +2,18 @@ import matter from 'gray-matter';
 import fs from "fs";
 import path from "path";
 
+export interface Post {
+  id: string;
+  date: Date;
+  title: string;
+}
+
 export const postsDirectory = path.join(process.cwd(), 'posts');
 
-export function getPosts() {
+export function getPosts(): Post[] {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
-  const allPostsData = fileNames.map(fileName => {
+  const posts = fileNames.map(fileName => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, '')
 
@@ -21,11 +27,11 @@ export function getPosts() {
     // Combine the data with the id
     return {
       id,
-      ...matterResult.data as { date: Date, title: string }
-    }
+      ...matterResult.data
+    } as Post;
   })
   // Sort posts by date
-  return allPostsData.sort((a, b) => {
+  return posts.sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {

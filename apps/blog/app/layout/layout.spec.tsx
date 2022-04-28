@@ -4,7 +4,7 @@ import Layout from './layout';
 
 describe('Layout', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Layout><></><></></Layout>);
+    const { baseElement } = render(<Layout/>);
     expect(baseElement).toBeTruthy();
   });
 });

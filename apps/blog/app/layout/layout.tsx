@@ -7,7 +7,7 @@ import Link from 'next/link'
 const name = 'Darryl'
 export const siteTitle = `${name}'s Blog`
 
-export default function Layout({ children, home }: { children: JSX.Element[], home?: boolean }) {
+export default function Layout({ children, home }: { children?: JSX.Element | JSX.Element[], home?: boolean }) {
   return (
     <div className={styles.container}>
       <Head>

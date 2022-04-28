@@ -1,9 +1,14 @@
 import Head from 'next/head'
 import Layout, {siteTitle} from '../app/layout/layout'
 import utilStyles from '../styles/utils.module.css'
-import {getPosts} from "@nx-nextjs-demo/posts";
+import {getPosts, Post} from "@nx-nextjs-demo/posts";
+import {GetStaticProps} from "next";
 
-export default function Home({ allPostsData }) {
+interface HomeProps {
+  posts: Post[];
+}
+
+export default function Home({posts}: HomeProps) {
   return (
     <Layout home>
       <Head>
@@ -15,13 +20,15 @@ export default function Home({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
+          {posts.map(({id, date, title}) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
+              <>
+                {title}
+                <br/>
+                {id}
+                <br/>
+                {date}
+              </>
             </li>
           ))}
         </ul>
@@ -30,11 +37,11 @@ export default function Home({ allPostsData }) {
   )
 }
 
-export async function getStaticProps() {
-  const allPostsData = getPosts();
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const posts = getPosts();
   return {
     props: {
-      allPostsData,
+      posts,
     }
   }
 }
