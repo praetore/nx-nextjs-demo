@@ -1,0 +1,32 @@
+{
+  "root": "libs/posts",
+  "sourceRoot": "libs/posts/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/posts",
+        "main": "libs/posts/src/index.ts",
+        "tsConfig": "libs/posts/tsconfig.lib.json",
+        "assets": ["libs/posts/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/posts/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/posts"],
+      "options": {
+        "jestConfig": "libs/posts/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
