@@ -7,7 +7,7 @@ import html from 'remark-html'
 
 export interface Post {
   id: string;
-  date: Date;
+  date: string;
   title: string;
   contentHtml: string;
 }

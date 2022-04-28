@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import Layout, {siteTitle} from '../app/layout/layout'
+import LayoutComponent, {siteTitle} from '../app/layout/layout.component'
 import utilStyles from '../styles/utils.module.css'
 import {getPosts, Post} from "@nx-nextjs-demo/posts";
 import {GetStaticProps} from "next";
+import Link from 'next/link';
+import DateComponent from "../app/date/date.component";
 
 interface HomeProps {
   posts: Post[];
@@ -10,7 +12,7 @@ interface HomeProps {
 
 export default function Home({posts}: HomeProps) {
   return (
-    <Layout home>
+    <LayoutComponent home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -23,17 +25,19 @@ export default function Home({posts}: HomeProps) {
           {posts.map(({id, date, title}) => (
             <li className={utilStyles.listItem} key={id}>
               <>
-                {title}
-                <br/>
-                {id}
-                <br/>
-                {date}
+                <Link href={`/posts/${id}`}>
+                  <a>{title}</a>
+                </Link>
+                <br />
+                <small className={utilStyles.lightText}>
+                  <DateComponent date={date} />
+                </small>
               </>
             </li>
           ))}
         </ul>
       </section>
-    </Layout>
+    </LayoutComponent>
   )
 }
 
