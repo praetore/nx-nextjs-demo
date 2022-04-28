@@ -1,18 +1,7 @@
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import '../styles/global.css'
 
-function CustomApp({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }) {
   return (
-    <>
-      <Head>
-        <title>Welcome to blog!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
-  );
+    <Component {...pageProps} />
+  )
 }
-
-export default CustomApp;

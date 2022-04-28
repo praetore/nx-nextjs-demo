@@ -1,7 +1,7 @@
-import { posts } from './posts';
+import { getPosts } from './posts';
 
 describe('posts', () => {
   it('should work', () => {
-    expect(posts()).toEqual('posts');
+    expect(getPosts()).toEqual('posts');
   });
 });
