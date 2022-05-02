@@ -5,8 +5,8 @@ import utilStyles from '../../styles/utils.module.css'
 import Link from 'next/link'
 
 interface LayoutProps {
-  name: string;
-  siteTitle: string;
+  name?: string;
+  siteTitle?: string;
   children?: JSX.Element | JSX.Element[];
   home?: boolean;
 }

@@ -15,7 +15,7 @@ interface HomeProps {
 
 export default function Home({posts}: HomeProps) {
   return (
-    <LayoutComponent home name={name} siteTitle={siteTitle}>
+    <LayoutComponent home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
