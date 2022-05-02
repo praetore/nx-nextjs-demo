@@ -6,7 +6,8 @@
     "start": "nx serve",
     "start:api": "nx serve api",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "test:affected": "nx affected --target=test"
   },
   "private": true,
   "dependencies": {
@@ -18,8 +19,8 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "regenerator-runtime": "0.13.7",
-    "remark": "^14.0.2",
-    "remark-html": "^15.0.1",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.2",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

@@ -5,7 +5,7 @@ import Index from '../pages';
 
 describe('Index', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Index />);
+    const { baseElement } = render(<Index posts={[]}/>);
     expect(baseElement).toBeTruthy();
   });
 });
