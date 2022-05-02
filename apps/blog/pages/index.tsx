@@ -1,10 +1,13 @@
 import Head from 'next/head'
-import LayoutComponent, {siteTitle} from '../app/layout/layout.component'
+import LayoutComponent from '../app/layout/layout.component'
 import utilStyles from '../styles/utils.module.css'
 import {getPosts, Post} from "@nx-nextjs-demo/posts";
 import {GetStaticProps} from "next";
 import Link from 'next/link';
 import DateComponent from "../app/date/date.component";
+
+const name = 'Darryl'
+export const siteTitle = `${name}'s Blog`
 
 interface HomeProps {
   posts: Post[];
@@ -12,7 +15,7 @@ interface HomeProps {
 
 export default function Home({posts}: HomeProps) {
   return (
-    <LayoutComponent home>
+    <LayoutComponent home name={name} siteTitle={siteTitle}>
       <Head>
         <title>{siteTitle}</title>
       </Head>

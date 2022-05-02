@@ -4,10 +4,14 @@ import styles from './layout.module.scss'
 import utilStyles from '../../styles/utils.module.css'
 import Link from 'next/link'
 
-const name = 'Darryl'
-export const siteTitle = `${name}'s Blog`
+interface LayoutProps {
+  name: string;
+  siteTitle: string;
+  children?: JSX.Element | JSX.Element[];
+  home?: boolean;
+}
 
-export default function LayoutComponent({ children, home }: { children?: JSX.Element | JSX.Element[], home?: boolean }) {
+export default function LayoutComponent({ children, home, siteTitle, name }: LayoutProps) {
   return (
     <div className={styles.container}>
       <Head>
